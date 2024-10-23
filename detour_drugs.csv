@@ -1,0 +1,49 @@
+Round,Treatment,Individual ,ID,Barriers_stuck,Latency_cross_barrier
+1st,DAMGO,ID1-Azul,ID1,3,31
+2nd,NAL,ID1-Azul,ID1,2,46
+3rd,PBS,ID1-Azul,ID1,3,60
+1st,Trial 1,ID1-Azul,ID1,4,90
+2nd,Trial 2,ID1-Azul,ID1,7,23
+3rd,Trial 3 ,ID1-Azul,ID1,4,60
+3rd,DAMGO ,ID2-Verde,ID2,6,300
+1st,NAL,ID2-Verde,ID2,7,56
+2nd,PBS,ID2-Verde,ID2,4,15
+1st,Trial 1,ID2-Verde,ID2,7,20
+2nd,Trial 2,ID2-Verde,ID2,8,7
+3rd,Trial 3 ,ID2-Verde,ID2,3,300
+2nd,DAMGO ,ID3-Rosa ,ID3,5,300
+3rd,NAL,ID3-Rosa ,ID3,5,300
+1st,PBS,ID3-Rosa ,ID3,5,255
+1st,Trial 1,ID3-Rosa ,ID3,6,300
+2nd,Trial 2,ID3-Rosa ,ID3,7,108
+3rd,Trial 3,ID3-Rosa ,ID3,3,300
+1st,DAMGO ,ID4-Vermelho,ID4,6,23
+2nd,NAL,ID4-Vermelho,ID4,4,300
+3rd,PBS,ID4-Vermelho,ID4,5,270
+1st,Trial 1,ID4-Vermelho,ID4,7,293
+2nd,Trial 2,ID4-Vermelho,ID4,8,5
+3rd,Trial 3,ID4-Vermelho,ID4,1,300
+3rd,DAMGO,ID5-Azul,ID5,1,5
+1st,NAL,ID5-Azul,ID5,1,65
+2nd,PBS,ID5-Azul,ID5,1,240
+1st,Trial 1,ID5-Azul,ID5,2,92
+2nd,Trial 2,ID5-Azul,ID5,6,75
+3rd,Trial 3,ID5-Azul,ID5,1,135
+2nd,DAMGO,ID6-Verde,ID6,2,300
+3rd,NAL,ID6-Verde,ID6,3,95
+1st,PBS,ID6-Verde,ID6,4,30
+1st,Trial 1,ID6-Verde,ID6,3,15
+2nd,Trial 2,ID6-Verde,ID6,7,21
+3rd,Trial 3,ID6-Verde,ID6,1,10
+1st,DAMGO,ID7-Vermelho,ID7,1,9
+2nd,NAL,ID7-Vermelho,ID7,2,63
+3rd,PBS,ID7-Vermelho,ID7,1,5
+1st,Trial 1,ID7-Vermelho,ID7,1,281
+2nd,Trial 2,ID7-Vermelho,ID7,4,45
+3rd,Trial 3,ID7-Vermelho,ID7,2,103
+3rd,DAMGO,ID8-Rosa ,ID8,2,70
+1st,NAL,ID8-Rosa ,ID8,2,103
+2nd,PBS,ID8-Rosa ,ID8,1,170
+1st,Trial 1,ID8-Rosa ,ID8,3,300
+2nd,Trial 2,ID8-Rosa ,ID8,5,145
+3rd,Trial 3,ID8-Rosa ,ID8,2,78
