@@ -1,15 +1,45 @@
-install.packages("tidyverse")
-install.packages("dplyr")
-install.packages("haven")
-install.packages("stringr")
-install.packages("ggplot2")
-install.packages("psych")
-install.packages("dplyr")
-install.packages("ggcorrplot")
-install.packages("WRS2")
-install.packages("dabestr")
+if(!require(tidyverse)){
+  install.packages("tidyverse")
+  library(tidyverse)
+}
+if(!require(dplyr)){
+  install.packages("dplyr")
+  library(dplyr)
+}
+if(!require(haven)){
+  install.packages("haven")
+  library(haven)
+}
+if(!require(stringr)){
+  install.packages("stringr")
+  library(stringr)
+}
+if(!require(stringr)){
+  install.packages("stringr")
+  library(stringr)
+}
+if(!require(ggplot2)){
+  install.packages("ggplot2")
+  library(ggplot2)
+}
+if(!require(psych)){
+  install.packages("psych")
+  library(psych)
+}
+if(!require(ggcorrplot)){
+  install.packages("ggcorrplot")
+  library(ggcorrplot)
+}
+if(!require(WRS2)){
+  install.packages("WRS2")
+  library(WRS2)
+}
+if(!require(dabestr)){
+  install.packages("dabestr")
+  library(dabestr)
+}
 
-client_CPP <- read_csv("Dropbox/LaNec/dados/Cleaners/Detour/client-CPP.csv") #Load dataframe in short form
+client_CPP <- read_csv("https://raw.githubusercontent.com/lanec-unifesspa/clientfish_reward/refs/heads/main/client_CPP.csv") #Load dataframe in short form
 client_CPP <- gather(client_CPP, key = "Timepoint", value = "time", 2:3) #Join time variables in one column, reorganizing dataframe in longform
 dabest_obj_CPP <- load(data =  client_CPP, x = Timepoint, y = time, idx = c("Baseline", "Test"), paired = "sequential", id_col = ID) %>% mean_diff() #Prepare data for plotting
 dabest_plot(dabest_obj_CPP, raw_marker_size = 0.7, raw_marker_alpha = 0.3, swarm_label = "Time in non-preferred/conditioned compartment (%)") #Gardner-Altman estimation plot
@@ -17,12 +47,12 @@ dabest_plot(dabest_obj_CPP, raw_marker_size = 0.7, raw_marker_alpha = 0.3, swarm
 yuend(x = client_CPP$Test, y = client_CPP$Basal, tr = 0.2) #Yuen's test on trimmed means for dependent samples
 dep.effect(x = client_CPP$Test, y = client_CPP$Basal) #Effect size calculation for the test
 
-client_CPP <- read_csv("Dropbox/LaNec/dados/Cleaners/Detour/client_CPP.csv") #Load dataframe in short form
+client_CPP <- read_csv("https://raw.githubusercontent.com/lanec-unifesspa/clientfish_reward/refs/heads/main/client_CPP.csv") #Load dataframe in short form
 corr <- round(cor(client_CPP[2:11]), 1) #Correlation matrix; since overall jolt levels were too low, these were not included in the matrix
 p.mat <- cor_pmat(client_CPP[2:11]) #P-values for the correlation matrix
 ggcorrplot(corr, method = "circle", type = "lower", p.mat = p.mat, insig = "blank") #Correlation plot
 
-naloxone_CPP <- read_csv("Dropbox/LaNec/dados/Cleaners/Detour/naloxone_CPP.csv",
+naloxone_CPP <- read_csv("https://raw.githubusercontent.com/lanec-unifesspa/clientfish_reward/refs/heads/main/naloxone_CPP.csv",
                          col_types = cols(Dose = col_factor(levels = c("0 mg/kg",
                                                                        "1.5 mg/kg", "3 mg/kg"))))
 View(naloxone_CPP)
@@ -44,7 +74,7 @@ t1waybt(Speed ~ Dose, data = naloxone_CPP, tr = 0.2, nboot = 200)
 dabest_obj_naloxone_speed <- load(data =  naloxone_CPP, x = Dose, y = Speed, idx = c("0 mg/kg", "1.5 mg/kg", "3 mg/kg")) %>% hedges_g()
 dabest_plot(dabest_obj_naloxone_speed, raw_marker_size = 0.7, contrast_ylim = c(-3, 3), raw_marker_alpha = 0.3, swarm_label = "Avg. swimming speed (cm/s)")
 
-DAMGO_CPP <- read_csv("Dropbox/LaNec/dados/Cleaners/Detour/DAMGO_CPP.csv",
+DAMGO_CPP <- read_csv("https://raw.githubusercontent.com/lanec-unifesspa/clientfish_reward/refs/heads/main/DAMGO_CPP.csv",
                       col_types = cols(Dose = col_factor(levels = c("0 mg/kg",
                                                                     "1 mg/kg", "5 mg/kg"))))
 View(DAMGO_CPP)
@@ -66,7 +96,7 @@ t1waybt(Speed ~ Dose, data = DAMGO_CPP, tr = 0.2, nboot = 200) #Robust bootstrap
 dabest_obj_DAMGO_speed <- load(data =  DAMGO_CPP, x = Dose, y = Speed, idx = c("0 mg/kg", "1 mg/kg", "5 mg/kg")) %>% hedges_g()
 dabest_plot(dabest_obj_DAMGO_speed, raw_marker_size = 0.7, contrast_ylim = c(-3, 3), raw_marker_alpha = 0.3, swarm_label = "Avg. swimming speed (cm/s)")
 
-detour_drugs <- read_csv("Dropbox/LaNec/dados/Cleaners/Detour/detour_drugs.csv",
+detour_drugs <- read_csv("https://raw.githubusercontent.com/lanec-unifesspa/clientfish_reward/refs/heads/main/detour_drugs.csv",
                          col_types = cols(Treatment = col_factor(levels = c("Trial 1",
                                                                             "Trial 2", "Trial 3", "PBS", "NAL",
                                                                             "DAMGO")), Individual = col_skip()))  #Load dataframe in short form
@@ -74,7 +104,6 @@ View(detour_drugs)
 rmanova(detour_drugs$Barriers_stuck, detour_drugs$Treatment, detour_drugs$ID) #Robust repeated measures ANOVA on number of barriers crossed
 rmmcp(detour_drugs$Barriers_stuck, detour_drugs$Treatment, detour_drugs$ID) #Post-hoc test
 dabest_plot(dabest_obj_detour, raw_marker_size = 0.7, contrast_ylim = c(-3, 3), raw_marker_alpha = 0.3, swarm_label = "Max. barriers crossed in trial") #Plot barrier data
-
 
 rmanova(detour_drugs$Latency_cross_barrier, detour_drugs$Treatment, detour_drugs$ID) #Robust repeated measures ANOVA on number of barriers crossed
 rmmcp(detour_drugs$Latency_cross_barrier, detour_drugs$Treatment, detour_drugs$ID) #Post-hoc test
